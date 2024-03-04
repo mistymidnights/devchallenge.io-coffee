@@ -64,7 +64,7 @@ body {
   padding: 5px 10px;
 }
 
-.btn-gray:hover {
+.btn-gray.active {
   color: var(--text);
   background-color: var(--active-button);
   border-radius: 5px;

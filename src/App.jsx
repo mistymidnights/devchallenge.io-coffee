@@ -3,20 +3,27 @@ import React, { useState, useEffect } from 'react';
 
 function App() {
   const [coffees, setCoffees] = useState([]);
+  const [activeButton, setActiveButton] = useState('All Products');
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch(
+        'https://raw.githubusercontent.com/devchallenges-io/web-project-ideas/main/front-end-projects/data/simple-coffee-listing-data.json'
+      );
+      const data = await response.json();
+      setCoffees(data);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+    setActiveButton('All Products');
+  };
+
+  const handleAvailableNowClick = () => {
+    setCoffees(coffees.filter((coffee) => coffee.available));
+    setActiveButton('Available Now');
+  };
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(
-          'https://raw.githubusercontent.com/devchallenges-io/web-project-ideas/main/front-end-projects/data/simple-coffee-listing-data.json'
-        );
-        const data = await response.json();
-        setCoffees(data);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
-
     fetchData();
   }, []);
 
@@ -28,7 +35,7 @@ function App() {
       <div className='list-items-container'>
         <div className='container text-center'>
           <div className='row'>
-            <div class='col-lg-5 col-sm-4 mx-auto  pt-5'>
+            <div className='col-lg-5 col-sm-4 mx-auto  pt-5'>
               <p className='title'>Our Collection</p>
               <p className='text'>
                 Introducing our Coffee Collection, a selection of unique coffees
@@ -37,12 +44,24 @@ function App() {
               </p>
             </div>
           </div>
-          <div class='row'>
-            <div class='col-lg-5 col-sm-4  mx-auto d-flex justify-content-center gap-3'>
-              <button type='button' class='btn-gray'>
+          <div className='row'>
+            <div className='col-lg-5 col-sm-4  mx-auto d-flex justify-content-center gap-3'>
+              <button
+                type='button'
+                className={`btn-gray ${
+                  activeButton === 'All Products' ? 'active' : ''
+                }`}
+                onClick={() => fetchData()}
+              >
                 All Products
               </button>
-              <button type='button' class='btn-gray'>
+              <button
+                type='button'
+                className={`btn-gray ${
+                  activeButton === 'Available Now' ? 'active' : ''
+                }`}
+                onClick={() => handleAvailableNowClick()}
+              >
                 Available Now
               </button>
             </div>
