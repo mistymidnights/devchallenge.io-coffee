@@ -1,0 +1,16 @@
+* {
+  --background-color: #111315;
+  --background-list: #1b1d1f;
+  --active-button: #6f757c;
+  --price: #bee3cc;
+  --popular: #f6c768;
+  --sold: #ed735d;
+  --text: #fef7ee;
+}
+:root {
+  background-color: var(--background-color);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
