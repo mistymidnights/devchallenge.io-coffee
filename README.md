@@ -1,4 +1,7 @@
-# React + Vite
+# React + Vite DEV CHALLENGE IO COFFEE SHOP
+
+<img src="https://i.ibb.co/0hkLh7w/coffeechallenge.png">
+<img src="https://i.ibb.co/cTP4QPN/coffeechallengemobile.png">
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
